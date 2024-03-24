@@ -1,16 +1,27 @@
-
-
+import {useDispatch} from 'react-redux'
+import {toggleAddTaskSliceActions} from '../../redux/toggleAddTaskSlice'
 import circleCrossIcon from '../../images/circle-cross-icon.png'
 import './index.css'
 
 
 const AddTask = () => {
+
+  const {closeAddTaskCard} = toggleAddTaskSliceActions
+  const dispatch = useDispatch()  
+  
+  const crossClicked = ()=>{
+    dispatch(closeAddTaskCard())
+  }  
     
   return (
     <div className='add-task-bg'>
         <div className='header-add-task-bg'>
             <h2>CREATE A TASK</h2>
-            <img src={circleCrossIcon} alt='X' className='circle-cross-icon' />  
+            <img src={circleCrossIcon}
+             alt='X' 
+             className='circle-cross-icon'
+             onClick={crossClicked}
+            />  
         </div>
         <form>
             <div className='each-label-bg'>

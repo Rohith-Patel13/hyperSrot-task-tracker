@@ -1,18 +1,27 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  value: 0,
+  isOpen: false,
 }
 
 export const toggleAddTaskSlice = createSlice({
-  name: 'counter',
+  name: 'toggleAddTask',
   initialState,
   reducers: {
-
+    openAddTaskCard:(previousState)=>{
+        previousState.isOpen=true
+    },
+    closeAddTaskCard:(previousState)=>{
+        previousState.isOpen=false
+    }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { } = counterSlice.actions
+export const toggleAddTaskSliceActions  = toggleAddTaskSlice.actions
 
-export default counterSlice.reducer
+
+const toggleAddTaskSliceReducer = toggleAddTaskSlice.reducer
+
+export default toggleAddTaskSliceReducer
+
