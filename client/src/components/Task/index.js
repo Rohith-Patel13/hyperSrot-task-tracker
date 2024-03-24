@@ -15,8 +15,12 @@ const Task = (props) => {
   const dispatch = useDispatch()
 
   const deleteButtonClicked=()=>{
-    console.log("deleteButtonClicked")
+    // console.log("deleteButtonClicked")
     dispatch(removedTask({id}))
+  }
+
+  const editButtonClicked =()=>{
+    console.log('edit Button Clicked')
   }
 
   return (
@@ -29,7 +33,9 @@ const Task = (props) => {
       <p>{`@${assignees}`}</p>
       <p>Assign</p>
       <div>
-        <button className='btn btn-warning btns'>Edit</button>
+        <button className='btn btn-warning btns'
+        onClick={editButtonClicked}
+        >Edit</button>
         <button className='btn btn-danger btns'
         onClick={deleteButtonClicked}
         >Delete</button>

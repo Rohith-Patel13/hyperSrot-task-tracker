@@ -5,5 +5,7 @@
     padding: 1em;
     width: min-content;
     height: 65vh;
+    overflow: auto;
 }
+
 
