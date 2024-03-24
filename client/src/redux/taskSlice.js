@@ -42,10 +42,23 @@ const taskSlice = createSlice({
   reducers: {
     pending:(previousState,action)=>{
         // console.log(action.payload)
+        // console.log(previousState.statusValues)
         previousState.statusValues.map((eachObject)=>(
             eachObject.statusText==='Pending'?
             eachObject.tasks.push(action.payload):null
         ))
+    },
+    removedTask:(previousState,action)=>{
+        // console.log(previousState.statusValues)
+        // console.log(action)
+        /*
+        filter() function returns a new array with the elements 
+        that pass the test implemented by the provided function, 
+        but it doesn't modify the original array in place. 
+        */
+        previousState.statusValues.forEach((status) => {
+            status.tasks = status.tasks.filter(task => task.id !== action.payload.id);
+        });
     },
   },
 })
