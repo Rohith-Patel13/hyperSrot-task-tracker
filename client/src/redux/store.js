@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import toggleAddTaskSliceReducer from './toggleAddTaskSlice'
+import taskSliceReducer from './taskSlice'
 
 const store = configureStore({
   reducer: {
-    mainToggleAddTaskSliceReducer:toggleAddTaskSliceReducer
+    mainToggleAddTaskSliceReducer:toggleAddTaskSliceReducer,
+    mainTaskSliceReducer:taskSliceReducer,
   },
 })
 

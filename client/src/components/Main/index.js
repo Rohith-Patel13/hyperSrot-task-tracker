@@ -1,9 +1,9 @@
 // import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
 import { useSelector,useDispatch} from 'react-redux'
-import {v4 as uuidv4} from 'uuid'
 
 import {toggleAddTaskSliceActions} from '../../redux/toggleAddTaskSlice'
+
 
 import './index.css'
 import profile from '../../images/account-profile.png'
@@ -11,30 +11,6 @@ import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import AddTask from '../AddTask/index'
 import EachStatusCard from '../EachStatusCard/index'
 
-
-
-const statusValues = [
-    {
-        id:uuidv4(),
-        statusText:'Pending'
-    },
-    {
-        id:uuidv4(),
-        statusText:'In Progress'
-    },
-    {
-        id:uuidv4(),
-        statusText:'Completed'
-    },
-    {
-        id:uuidv4(),
-        statusText:'Deployed'
-    },
-    {
-        id:uuidv4(),
-        statusText:'Deffered'
-    },
-]
 
 
 
@@ -47,6 +23,14 @@ const Main = () => {
     const {isOpen} = mainToggleAddTaskSliceReducer
     return isOpen
   })
+
+  const statusListValues = useSelector((previousState)=>{
+    const {mainTaskSliceReducer} = previousState
+    const {statusValues} = mainTaskSliceReducer
+    return statusValues
+  })
+
+  // console.log(statusListValues)
 
   const addNewTaskButtonClicked=()=>{
     dispatch(openAddTaskCard())
@@ -67,7 +51,7 @@ const Main = () => {
 
         <div className='bg-status-card'>
             {
-                statusValues.map((eachStatus)=>(
+                statusListValues.map((eachStatus)=>(
                     <EachStatusCard eachStatus={eachStatus} key={eachStatus.id}/>
                 ))
             }
