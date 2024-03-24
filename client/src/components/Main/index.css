@@ -24,4 +24,13 @@
 
 .add-task-btn{
     cursor: pointer;
+    margin-bottom: 1em;
+}
+
+.bg-status-card{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
 }

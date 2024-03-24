@@ -4,6 +4,7 @@ import circleCrossIcon from '../../images/circle-cross-icon.png'
 import './index.css'
 
 
+
 const AddTask = () => {
 
   const {closeAddTaskCard} = toggleAddTaskSliceActions
@@ -12,6 +13,10 @@ const AddTask = () => {
   const crossClicked = ()=>{
     dispatch(closeAddTaskCard())
   }  
+
+  const addBtnPopClicked=()=>{
+    dispatch(closeAddTaskCard())
+  }
     
   return (
     <div className='add-task-bg'>
@@ -48,7 +53,11 @@ const AddTask = () => {
                     <option value="p1">P1</option>
                     <option value="p2">P2</option>
                 </select>
-            </div>           
+            </div>    
+
+            <button
+             onClick={addBtnPopClicked}
+             className='btn btn-success'>Add Task</button>       
         </form>
     </div>
   )

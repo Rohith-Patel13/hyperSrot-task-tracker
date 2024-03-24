@@ -1,0 +1,8 @@
+.each-status-card-bg{
+    border: 2px solid gray;
+    border-radius: 1rem;
+    margin: 1em;
+    padding: 1em;
+    width: min-content;
+}
+
