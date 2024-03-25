@@ -1,4 +1,4 @@
-.add-task-bg{
+.edit-task-bg{
     width: 500px;
     position: fixed;
     top: 50%;
@@ -10,14 +10,20 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-
-.header-add-task-bg{
+.header-edit-task-bg{
     background-color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1em;
     
+}
+
+
+.circle-cross-icon{
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
 }
 
 
@@ -32,12 +38,3 @@
 .label-name{
     cursor: pointer;
 }
-
-.circle-cross-icon{
-    height: 25px;
-    width: 25px;
-    cursor: pointer;
-}
-
-
-

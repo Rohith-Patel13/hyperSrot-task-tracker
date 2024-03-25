@@ -3,6 +3,7 @@ import { useState } from 'react'
 import {v4 as uuidv4} from 'uuid'
 
 
+
 import {toggleAddTaskSliceActions} from '../../redux/toggleAddTaskSlice'
 import {taskSliceActions} from '../../redux/taskSlice'
 import circleCrossIcon from '../../images/circle-cross-icon.png'
@@ -17,6 +18,7 @@ const AddTask = () => {
 
   const {closeAddTaskCard} = toggleAddTaskSliceActions
   const {pending}= taskSliceActions
+
 
   const dispatch = useDispatch()  
   

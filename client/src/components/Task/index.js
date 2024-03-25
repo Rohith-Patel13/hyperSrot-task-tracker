@@ -1,6 +1,7 @@
 
 import { useDispatch } from 'react-redux'
 import {taskSliceActions} from '../../redux/taskSlice'
+import {toggleAddTaskSliceActions} from '../../redux/toggleAddTaskSlice'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 import './index.css'
@@ -9,9 +10,9 @@ const Task = (props) => {
   
   const {eachObject}=props
   const {id,title,description,assignees,priority}=eachObject
+  const {editOpen} = toggleAddTaskSliceActions
   const {removedTask}= taskSliceActions
-  
-
+ 
   const dispatch = useDispatch()
 
   const deleteButtonClicked=()=>{
@@ -20,8 +21,9 @@ const Task = (props) => {
   }
 
   const editButtonClicked =()=>{
-    console.log('edit Button Clicked')
+    dispatch(editOpen())
   }
+
 
   return (
     <div>

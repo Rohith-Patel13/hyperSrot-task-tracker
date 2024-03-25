@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   isOpen: false,
+  isEditOpen:false
 }
 
 export const toggleAddTaskSlice = createSlice({
@@ -13,6 +14,12 @@ export const toggleAddTaskSlice = createSlice({
     },
     closeAddTaskCard:(previousState)=>{
         previousState.isOpen=false
+    },
+    editOpen:(previousState)=>{
+      previousState.isEditOpen=true
+    },
+    editClose:(previousState)=>{
+      previousState.isEditOpen=false
     }
   },
 })

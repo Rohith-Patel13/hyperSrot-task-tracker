@@ -4,12 +4,14 @@ import { useSelector,useDispatch} from 'react-redux'
 
 import {toggleAddTaskSliceActions} from '../../redux/toggleAddTaskSlice'
 
-
+// import Edit from '../Edit/index'
 import './index.css'
 import profile from '../../images/account-profile.png'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import AddTask from '../AddTask/index'
 import EachStatusCard from '../EachStatusCard/index'
+import Edit from '../Edit'
+
 
 
 
@@ -23,6 +25,14 @@ const Main = () => {
     const {isOpen} = mainToggleAddTaskSliceReducer
     return isOpen
   })
+
+  const isEditOpenValue = useSelector((previousState)=>{
+    const {mainToggleAddTaskSliceReducer} = previousState 
+    const {isEditOpen} = mainToggleAddTaskSliceReducer
+    return isEditOpen
+  })
+
+  
 
   const statusListValues = useSelector((previousState)=>{
     const {mainTaskSliceReducer} = previousState
@@ -58,6 +68,9 @@ const Main = () => {
         </div>
     
         {isOpenValue? <AddTask/> : null}
+        {isEditOpenValue? <Edit/>:null}
+        
+        
       </div>
     </div>
   )
