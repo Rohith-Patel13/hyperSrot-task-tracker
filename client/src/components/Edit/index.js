@@ -1,19 +1,44 @@
-
+import { useState,useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import {toggleAddTaskSliceActions} from '../../redux/toggleAddTaskSlice'
+import {taskSliceActions} from '../../redux/taskSlice'
 import circleCrossIcon from '../../images/circle-cross-icon.png'
 
 import './index.css'
 
-const Edit = () => {
+const Edit = (props) => {
+
+  const {eachObject} = props  
+  const [data,setData] = useState(eachObject)
+
+  // console.log(id, 'in Edit Component')
 
   const dispatch = useDispatch()  
   const {editClose} = toggleAddTaskSliceActions
+  const {edit} = taskSliceActions
 
+  useEffect(() => {
+    setData(eachObject); // Update state when props change
+  }, [eachObject]);
+ 
 
   const crossClicked = ()=>{
     dispatch(editClose())
   }  
+
+  const saveButtonClicked=()=>{
+    
+    dispatch(edit(data))
+  }
+
+  const handleInputChange =(e)=>{
+    const { name, value } = e.target;
+    setData({
+      ...data,
+      [name]: value
+    });
+  }
+
 
   return (
     <div className='edit-task-bg'>
@@ -30,8 +55,8 @@ const Edit = () => {
                 <label className='label-name' htmlFor="selectedOption">Priority:</label>
                 <select id="selectedOption"
                  name='priority'
-                //  value={formData.priority}
-                //  onChange={handleInputChange}
+                value={data.priority}
+                onChange={handleInputChange}
                 >                   
                     <option value="p0">P0</option>
                     <option value="p1">P1</option>
@@ -42,21 +67,25 @@ const Edit = () => {
             <div className='each-label-bg'>
                 <label className='label-name' htmlFor="statusSelectedOption">Status:</label>
                 <select id="statusSelectedOption"
-                 name='status'
-                //  value={formData.priority}
-                //  onChange={handleInputChange}
+                name='status'
+                value={data.statusValue}
+                onChange={handleInputChange}
                 >                   
-                    <option value="completed">Completed</option>
-                    <option value="inprogress">In Progress</option>
-                    <option value="pending">Pending</option>
-                    <option value="deployed">Deployed</option>
-                    <option value="deffered">Deffered</option>
+                    <option value="Completed">Completed</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Deployed">Deployed</option>
+                    <option value="Deffered">Deffered</option>
                 </select>
-            </div>         
+            </div>  
+
+            <button type='button' className='btn btn-success'
+            onClick={saveButtonClicked}
+            >Save</button>    
         </form>
+        
     </div>
   )
 }
 
 export default Edit
-

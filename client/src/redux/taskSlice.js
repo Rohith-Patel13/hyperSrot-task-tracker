@@ -40,11 +40,11 @@ const taskSlice = createSlice({
   name: 'taskParticular',
   initialState:firstState,
   reducers: {
-    pending:(previousState,action)=>{
-        // console.log(action.payload)
+    addToStatus:(previousState,action)=>{
+        // console.log(action.payload, "in addToStatus action")
         // console.log(previousState.statusValues)
         previousState.statusValues.map((eachObject)=>(
-            eachObject.statusText==='Pending'?
+            eachObject.statusText===action.payload.statusValue?
             eachObject.tasks.push(action.payload):null
         ))
     },
@@ -59,6 +59,10 @@ const taskSlice = createSlice({
         previousState.statusValues.forEach((status) => {
             status.tasks = status.tasks.filter(task => task.id !== action.payload.id);
         });
+    },
+    edit:(previousState,action)=>{
+        console.log(previousState)
+        console.log(action.payload)
     },
   },
 })

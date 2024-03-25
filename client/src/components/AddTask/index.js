@@ -14,10 +14,10 @@ import './index.css'
 
 const AddTask = () => {
 
-  const [formData,setFormData] = useState({id:uuidv4(),title:'',description:'',team:'',assignees:'',priority: 'p0'})
+  const [formData,setFormData] = useState({id:uuidv4(),title:'',description:'',team:'',assignees:'',priority: 'p0',statusValue:'Pending'})
 
   const {closeAddTaskCard} = toggleAddTaskSliceActions
-  const {pending}= taskSliceActions
+  const {addToStatus}= taskSliceActions
 
 
   const dispatch = useDispatch()  
@@ -27,7 +27,8 @@ const AddTask = () => {
   }  
 
   const addBtnPopClicked=()=>{
-    dispatch(pending(formData))
+    // console.log(formData,'in addBtnPopClicked')
+    dispatch(addToStatus(formData))
     dispatch(closeAddTaskCard())
   }
 
