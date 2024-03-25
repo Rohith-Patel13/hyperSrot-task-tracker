@@ -1,4 +1,4 @@
-
+import { useState } from 'react'
 import { useDispatch ,useSelector} from 'react-redux'
 import Edit from '../Edit/index'
 import {taskSliceActions} from '../../redux/taskSlice'
@@ -13,7 +13,9 @@ const Task = (props) => {
   const {id,title,description,assignees,priority}=eachObject
   const {editOpen} = toggleAddTaskSliceActions
   const {removedTask}= taskSliceActions
- 
+
+  const [editTaskId, setEditTaskId] = useState(null);
+  
   const dispatch = useDispatch()
 
   const isEditOpenValue = useSelector((previousState)=>{
@@ -28,7 +30,10 @@ const Task = (props) => {
   }
 
   const editButtonClicked =()=>{
-    dispatch(editOpen(id))
+    // console.log(id,'editButtonClicked')   
+    // console.log(eachObject,'editButtonClicked')
+    dispatch(editOpen({id}))
+    setEditTaskId(id); // Set the ID of the task to be edited
   }
 
 
@@ -52,9 +57,13 @@ const Task = (props) => {
         >Delete</button>
       </div>
 
-      {isEditOpenValue? <Edit eachObject={eachObject} key={eachObject.id}/>:null}
+      {/* Render the Edit component only for the selected task */}
+      {isEditOpenValue && editTaskId === id && (
+        <Edit eachObject={eachObject} key={eachObject.id} />
+      )}   
     </div>
   )
 }
 
 export default Task
+

@@ -3,8 +3,6 @@ import { createSlice } from '@reduxjs/toolkit'
 import {v4 as uuidv4} from 'uuid'
 
 
- 
-
 const firstState = {
     statusValues : [
         {
@@ -60,9 +58,10 @@ const taskSlice = createSlice({
             status.tasks = status.tasks.filter(task => task.id !== action.payload.id);
         });
     },
+  
     edit:(previousState,action)=>{
         console.log(previousState)
-        console.log(action.payload)
+        console.log(action.payload.id)
     },
   },
 })
