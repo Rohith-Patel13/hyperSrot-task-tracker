@@ -1,4 +1,4 @@
-import {  useState } from 'react'
+import {  useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import {toggleAddTaskSliceActions} from '../../redux/toggleAddTaskSlice'
 import {taskSliceActions} from '../../redux/taskSlice'
@@ -8,10 +8,10 @@ import './index.css'
 
 const Edit = (props) => {
   
-  const {eachObject} = props  
+  const {eachObject} = props 
+
   console.log(eachObject,'in Edit')
   const [data,setData] = useState(eachObject)
-
 
 
   // console.log(id, 'in Edit Component')
@@ -37,6 +37,10 @@ const Edit = (props) => {
       [name]: value
     });
   }
+
+  useEffect(()=>{
+    setData(eachObject)
+  },[eachObject])
 
 
 

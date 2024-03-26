@@ -14,7 +14,7 @@ const Task = (props) => {
   const {editOpen} = toggleAddTaskSliceActions
   const {removedTask}= taskSliceActions
 
-  const [editTaskId, setEditTaskId] = useState(null);
+  const [editId, setEditId] = useState(null);
   
   const dispatch = useDispatch()
 
@@ -30,10 +30,10 @@ const Task = (props) => {
   }
 
   const editButtonClicked =()=>{
-    // console.log(id,'editButtonClicked')   
-    // console.log(eachObject,'editButtonClicked')
+    console.log(id,'editButtonClicked')   
+    console.log(eachObject,'editButtonClicked')
     dispatch(editOpen({id}))
-    setEditTaskId(id); // Set the ID of the task to be edited
+    setEditId(id); 
   }
 
 
@@ -57,8 +57,8 @@ const Task = (props) => {
         >Delete</button>
       </div>
 
-      {/* Render the Edit component only for the selected task */}
-      {isEditOpenValue && editTaskId === id && (
+      
+      {isEditOpenValue && editId===eachObject.id && (
         <Edit eachObject={eachObject} key={eachObject.id} />
       )}   
     </div>

@@ -1,9 +1,6 @@
 
-
 import Task from '../Task/index'
 import './index.css'
-
-
 
 
 const EachStatusCard = (props) => {
@@ -20,7 +17,6 @@ const EachStatusCard = (props) => {
             <Task eachObject={eachObject} key={eachObject.id}/>
           )):null
         }
-        
     </div>
   )
 }
