@@ -12,7 +12,7 @@ const EachStatusCard = (props) => {
           const priorityOrder = { p0: 0, p1: 1, p2: 2 }; // Define priority order
           return priorityOrder[a.priority] - priorityOrder[b.priority];
       });
-  };
+    };
     
   return (
     <div className='each-status-card-bg'>

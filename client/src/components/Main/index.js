@@ -14,7 +14,7 @@ import EachStatusCard from '../EachStatusCard/index'
 const Main = () => {
 
   const dispatch = useDispatch()  
-  const {openAddTaskCard} = toggleAddTaskSliceActions
+  const {openAddTaskCard,changeSortBy} = toggleAddTaskSliceActions
   const isOpenValue = useSelector((previousState)=>{
     const {mainToggleAddTaskSliceReducer} = previousState
     const {isOpen} = mainToggleAddTaskSliceReducer
@@ -27,11 +27,21 @@ const Main = () => {
     return statusValues
   })
 
+  const sortBy = useSelector((previousState)=>{
+    const {mainToggleAddTaskSliceReducer} = previousState
+    const {sortBy} = mainToggleAddTaskSliceReducer
+    return sortBy
+  })
+
   // console.log(statusListValues)
 
   const addNewTaskButtonClicked=()=>{
     dispatch(openAddTaskCard())
   }
+
+  const handleSortChange = (e) => {
+    dispatch(changeSortBy(e.target.value));
+  };
 
   return (
     <div className='task-board-bg'>
@@ -47,7 +57,7 @@ const Main = () => {
 
         <div className='sort-by-bg'>
           <label htmlFor='sortById'>Sort By:</label>
-          <select id='sortById'>
+          <select id='sortById' onChange={handleSortChange} value={sortBy}>
             <option value='priority'>
               Priority
             </option>

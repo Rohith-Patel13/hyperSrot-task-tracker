@@ -8,7 +8,11 @@ import './index.css'
 
 const AddTask = () => {
 
-  const [formData,setFormData] = useState({id:uuidv4(),title:'',description:'',team:'',assignees:'',priority: 'p0',statusValue:'Pending'})
+  const [formData,setFormData] = useState({id:uuidv4(),title:'',description:'',
+  team:'',assignees:'',
+  priority: 'p0',
+  statusValue:'Pending', startDate: new Date().toLocaleString()
+  })
 
   const {closeAddTaskCard} = toggleAddTaskSliceActions
   const {addToStatus}= taskSliceActions

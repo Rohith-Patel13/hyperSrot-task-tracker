@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   isOpen: false,
-  isEditOpen:false
+  isEditOpen:false,
+  sortBy: 'priority', 
 }
 
 export const toggleAddTaskSlice = createSlice({
@@ -20,6 +21,9 @@ export const toggleAddTaskSlice = createSlice({
     },
     editClose:(previousState)=>{
       previousState.isEditOpen=false
+    },
+    changeSortBy: (state, action) => {
+      state.sortBy = action.payload;
     }
   },
 })
