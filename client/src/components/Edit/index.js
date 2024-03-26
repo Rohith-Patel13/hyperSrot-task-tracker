@@ -22,7 +22,7 @@ const Edit = () => {
 
   const dispatch = useDispatch()  
   const {editClose} = toggleAddTaskSliceActions
-  const {edit} = taskSliceActions
+  const {edit,addToStatus} = taskSliceActions
 
 
   const crossClicked = ()=>{
@@ -30,7 +30,9 @@ const Edit = () => {
   }  
 
   const saveButtonClicked=()=>{
+    dispatch(addToStatus(data))
     dispatch(edit({data}))
+    dispatch(editClose())
   }
 
 
@@ -48,6 +50,7 @@ const Edit = () => {
 
 
 
+  // console.log(data,'In Edit Component')
   return (
     <div className='edit-task-bg'>
         <div className='header-edit-task-bg'>
@@ -75,7 +78,7 @@ const Edit = () => {
             <div className='each-label-bg'>
                 <label className='label-name' htmlFor="statusSelectedOption">Status:</label>
                 <select id="statusSelectedOption"
-                name='status'
+                name='statusValue'
                 value={data.statusValue}
                 onChange={handleInputChange}
                 >                   

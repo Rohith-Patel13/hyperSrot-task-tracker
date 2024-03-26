@@ -68,7 +68,7 @@ const taskSlice = createSlice({
   
     edit:(previousState,action)=>{
         console.log(previousState)
-        console.log(action.payload.id)
+        console.log(action.payload.data)
     },
   },
 })
