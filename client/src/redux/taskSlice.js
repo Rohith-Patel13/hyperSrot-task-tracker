@@ -66,10 +66,32 @@ const taskSlice = createSlice({
         previousState.taskToBeEdit=action.payload.eachObject
     },
   
-    edit:(previousState,action)=>{
-        console.log(previousState)
-        console.log(action.payload.data)
-    },
+    edit: (state, action) => {
+        const { id, data } = action.payload;
+        state.statusValues.forEach(status => {
+          status.tasks.forEach(task => {
+            if (task.id === id) {
+              // Update priority if changed
+              if (data.priority) {
+                task.priority = data.priority;
+              }
+              // Move task to new status if status changed
+              if (data.statusValue && task.statusValue !== data.statusValue) {
+                const index = status.tasks.findIndex(t => t.id === id);
+                if (index !== -1) {
+                  status.tasks.splice(index, 1);
+                  state.statusValues.forEach(newStatus => {
+                    if (newStatus.statusText === data.statusValue) {
+                      newStatus.tasks.push(task);
+                    }
+                  });
+                }
+                task.statusValue = data.statusValue;
+              }
+            }
+          });
+        });
+      },
   },
 })
 

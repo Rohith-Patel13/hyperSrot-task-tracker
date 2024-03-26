@@ -10,7 +10,7 @@ import './index.css'
 const Task = (props) => {
   
   const {eachObject}=props
-  const {id,title,description,assignees,priority}=eachObject
+  const {id,title,description,assignees,priority,statusValue}=eachObject
   const {editOpen} = toggleAddTaskSliceActions
   const {removedTask,taskToBeEditable}= taskSliceActions  
   const dispatch = useDispatch()
@@ -42,7 +42,7 @@ const Task = (props) => {
         {description}
       </p>
       <p>{`@${assignees}`}</p>
-      <p>Assign</p>
+      <p>{statusValue}</p>
       <div>
         <button className='btn btn-warning btns'
         type='button'
