@@ -15,15 +15,26 @@ const EachStatusCard = (props) => {
     });
   }; 
 
+  const sortTasksByStartDate=(tasks)=>{
+    return tasks.slice().sort((taskA,taskB)=>{
+      return taskA.startDate-taskB.startDate
+    })
+  }  
+
+  const sortTasksByEndDate=(tasks)=>{
+    return tasks.slice().reverse()
+  }
+
+
 
   const sortTasksBy=(tasks)=>{
     switch (sortBy) {       
       case 'priority':
         return sortTasksByPriority(tasks) 
       case "startDate":
-        return tasks  
+        return sortTasksByStartDate(tasks)  
       case "endDate":
-        return tasks.slice().reverse()
+        return sortTasksByEndDate(tasks)
       default:
         return sortTasksByPriority(tasks)
     }
