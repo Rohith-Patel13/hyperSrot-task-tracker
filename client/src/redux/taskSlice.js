@@ -75,7 +75,16 @@ const taskSlice = createSlice({
                         eachTask.priority=data.priority
                     }
                     if(eachTask.statusValue!==data.statusValue){
-                        console.log(data.statusValue,'changed status')
+                        const index = eachStatus.tasks.findIndex(t => t.id === data.id);
+                        console.log(index,'index')
+                        if (index !== -1) {
+                            eachStatus.tasks.splice(index, 1);
+                        }
+                        const targetStatus = previousState.statusValues.find(status => status.statusText === data.statusValue);
+                        if (targetStatus) {
+                            targetStatus.tasks.push(eachTask);
+                        }
+                        eachTask.statusValue = data.statusValue;
                     }
                 }
                 return null
