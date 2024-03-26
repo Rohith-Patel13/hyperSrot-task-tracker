@@ -30,7 +30,9 @@ const firstState = {
             statusText:'Deffered',
             tasks:[],
         },
-    ]
+    ],
+
+    taskToBeEdit:{}
     
 }
 
@@ -57,6 +59,11 @@ const taskSlice = createSlice({
         previousState.statusValues.forEach((status) => {
             status.tasks = status.tasks.filter(task => task.id !== action.payload.id);
         });
+    },
+
+    taskToBeEditable:(previousState,action)=>{
+        // console.log(previousState,action.payload.eachObject)
+        previousState.taskToBeEdit=action.payload.eachObject
     },
   
     edit:(previousState,action)=>{

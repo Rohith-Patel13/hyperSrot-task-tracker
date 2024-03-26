@@ -1,17 +1,21 @@
 import {  useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch,useSelector } from 'react-redux'
 import {toggleAddTaskSliceActions} from '../../redux/toggleAddTaskSlice'
 import {taskSliceActions} from '../../redux/taskSlice'
 import circleCrossIcon from '../../images/circle-cross-icon.png'
 
 import './index.css'
 
-const Edit = (props) => {
+const Edit = () => {
   
-  const {eachObject} = props 
+  const editableObject = useSelector((previousState)=>{
+    const {mainTaskSliceReducer} = previousState 
+    const {taskToBeEdit} = mainTaskSliceReducer
+    return taskToBeEdit
+  })
 
-  console.log(eachObject,'in Edit')
-  const [data,setData] = useState(eachObject)
+  
+  const [data,setData] = useState({})
 
 
   // console.log(id, 'in Edit Component')
@@ -39,8 +43,8 @@ const Edit = (props) => {
   }
 
   useEffect(()=>{
-    setData(eachObject)
-  },[eachObject])
+    setData(editableObject)
+  },[editableObject])
 
 
 

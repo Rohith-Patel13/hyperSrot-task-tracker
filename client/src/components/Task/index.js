@@ -1,4 +1,4 @@
-import { useState } from 'react'
+
 import { useDispatch ,useSelector} from 'react-redux'
 import Edit from '../Edit/index'
 import {taskSliceActions} from '../../redux/taskSlice'
@@ -12,10 +12,7 @@ const Task = (props) => {
   const {eachObject}=props
   const {id,title,description,assignees,priority}=eachObject
   const {editOpen} = toggleAddTaskSliceActions
-  const {removedTask}= taskSliceActions
-
-  const [editId, setEditId] = useState(null);
-  
+  const {removedTask,taskToBeEditable}= taskSliceActions  
   const dispatch = useDispatch()
 
   const isEditOpenValue = useSelector((previousState)=>{
@@ -30,10 +27,10 @@ const Task = (props) => {
   }
 
   const editButtonClicked =()=>{
-    console.log(id,'editButtonClicked')   
-    console.log(eachObject,'editButtonClicked')
+    // console.log(id,'editButtonClicked')   
+    // console.log(eachObject,'editButtonClicked')
     dispatch(editOpen({id}))
-    setEditId(id); 
+    dispatch(taskToBeEditable({eachObject}))    
   }
 
 
@@ -58,8 +55,8 @@ const Task = (props) => {
       </div>
 
       
-      {isEditOpenValue && editId===eachObject.id && (
-        <Edit eachObject={eachObject} key={eachObject.id} />
+      {isEditOpenValue &&  (
+        <Edit />
       )}   
     </div>
   )
