@@ -45,6 +45,21 @@ const Main = () => {
         onClick={addNewTaskButtonClicked}
         >Add New Task</button>
 
+        <div className='sort-by-bg'>
+          <label htmlFor='sortById'>Sort By:</label>
+          <select id='sortById'>
+            <option value='priority'>
+              Priority
+            </option>
+            <option value='startDate'>
+              Start Date
+            </option>
+            <option value='endDate'>
+              End Date
+            </option>
+          </select>
+        </div>
+        
         <div className='bg-status-card'>
             {
               statusListValues.map((eachStatus)=>(
