@@ -86,6 +86,10 @@ const taskSlice = createSlice({
                         }
                         eachTask.statusValue = data.statusValue;
                     }
+                    // Update endDate if statusValue is "Completed"
+                    if (data.statusValue === "Completed") {
+                        eachTask.endDate = new Date().toLocaleString();
+                    }
                 }
                 return null
             })
