@@ -33,7 +33,6 @@ const Main = () => {
     dispatch(openAddTaskCard())
   }
 
-
   return (
     <div className='task-board-bg'>
       <div className='header'>

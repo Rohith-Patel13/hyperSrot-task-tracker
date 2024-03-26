@@ -1,16 +1,10 @@
 import {useDispatch} from 'react-redux'
 import { useState } from 'react'
 import {v4 as uuidv4} from 'uuid'
-
-
-
 import {toggleAddTaskSliceActions} from '../../redux/toggleAddTaskSlice'
 import {taskSliceActions} from '../../redux/taskSlice'
 import circleCrossIcon from '../../images/circle-cross-icon.png'
 import './index.css'
-
-
-
 
 const AddTask = () => {
 
