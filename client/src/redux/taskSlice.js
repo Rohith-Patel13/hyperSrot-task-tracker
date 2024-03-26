@@ -71,7 +71,12 @@ const taskSlice = createSlice({
         previousState.statusValues.forEach((eachStatus)=>{
             eachStatus.tasks.forEach((eachTask)=>{
                 if(eachTask.id===data.id){
-                    eachTask.priority=data.priority
+                    if (eachTask.priority!==data.priority) {
+                        eachTask.priority=data.priority
+                    }
+                    if(eachTask.statusValue!==data.statusValue){
+                        console.log(data.statusValue,'changed status')
+                    }
                 }
                 return null
             })
