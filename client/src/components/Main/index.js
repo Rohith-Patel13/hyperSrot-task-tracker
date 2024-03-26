@@ -73,7 +73,7 @@ const Main = () => {
         <div className='bg-status-card'>
             {
               statusListValues.map((eachStatus)=>(
-                <EachStatusCard eachStatus={eachStatus} key={eachStatus.id}/>
+                <EachStatusCard eachStatus={eachStatus} sortBy={sortBy} key={eachStatus.id}/>
               ))
             }
         </div>
