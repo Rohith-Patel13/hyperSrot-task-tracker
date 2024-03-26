@@ -22,7 +22,7 @@ const Edit = () => {
 
   const dispatch = useDispatch()  
   const {editClose} = toggleAddTaskSliceActions
-  const {edit,addToStatus} = taskSliceActions
+  const {edit} = taskSliceActions
 
 
   const crossClicked = ()=>{
@@ -30,7 +30,6 @@ const Edit = () => {
   }  
 
   const saveButtonClicked=()=>{
-    dispatch(addToStatus(data))
     dispatch(edit({data}))
     dispatch(editClose())
   }
