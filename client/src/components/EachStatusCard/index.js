@@ -50,28 +50,22 @@ const EachStatusCard = (props) => {
       // console.log(eachTask.priority.toLowerCase(),"eachTask.priority.toLowerCase()")
       const priorityMatch = filterByPriority===''?true: eachTask.priority.toLowerCase().includes(filterByPriority.toLowerCase())          
       // console.log(priorityMatch,'priorityMatch')
-      return eachTask.assignees.toLowerCase().includes(filterAssignee.toLowerCase()) && priorityMatch        
+      const taskStartDate = new Date(eachTask.startDate);
+      const taskEndDate = new Date(eachTask.endDate);
+       
+      return eachTask.assignees.toLowerCase().includes(filterAssignee.toLowerCase())
+      && priorityMatch && taskStartDate >= startDate && taskEndDate <= endDate     
     })
-    // console.log(filteredTasks)
-
-    const tasksInRange = filteredTasks.filter((task) => {
-      if(startDate===null && endDate===null){
-        return filteredTasks
-      }
-      const taskStartDate = new Date(task.startDate);
-      const taskEndDate = new Date(task.endDate);
-      return taskStartDate >= startDate && taskEndDate <= endDate;
-    });
 
     switch (sortBy) {       
       case 'priority':
-        return sortTasksByPriority(tasksInRange) 
+        return sortTasksByPriority(filteredTasks) 
       case "startDate":
-        return sortTasksByStartDate(tasksInRange)  
+        return sortTasksByStartDate(filteredTasks)  
       case "endDate":
-        return sortTasksByEndDate(tasksInRange)
+        return sortTasksByEndDate(filteredTasks)
       default:
-        return sortTasksByPriority(tasksInRange)
+        return sortTasksByPriority(filteredTasks)
     }
   }
 
