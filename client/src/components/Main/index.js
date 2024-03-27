@@ -1,5 +1,6 @@
 // import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
+
 import { useSelector,useDispatch} from 'react-redux'
 
 import {toggleAddTaskSliceActions} from '../../redux/toggleAddTaskSlice'
@@ -12,7 +13,7 @@ import EachStatusCard from '../EachStatusCard/index'
 
 
 const Main = () => {
-
+  
   const dispatch = useDispatch()  
   const {openAddTaskCard,changeSortBy,changeFilterBy,setFilterAssignee} = toggleAddTaskSliceActions
   const isOpenValue = useSelector((previousState)=>{
@@ -63,6 +64,9 @@ const Main = () => {
     dispatch(setFilterAssignee(e.target.value))
   }
 
+  // Function to handle date range change
+
+
   return (
     <div className='task-board-bg'>
       <div className='header'>
@@ -92,6 +96,9 @@ const Main = () => {
               P2
             </option>
           </select>
+
+        {/* Date Range Picker */}
+
         </div>
 
         <div className='sort-by-bg'>
@@ -115,7 +122,8 @@ const Main = () => {
                 <EachStatusCard eachStatus={eachStatus}
                  filterByPriority = {filterByPriority}
                  filterAssignee={filterAssignee}
-                 sortBy={sortBy} key={eachStatus.id}/>
+                 sortBy={sortBy}
+                 key={eachStatus.id}/>
               ))
             }
         </div>
