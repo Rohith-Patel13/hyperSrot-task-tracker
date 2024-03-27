@@ -1,11 +1,11 @@
 // import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-
-import { DateRangePicker } from 'react-date-range';
-import { format } from 'date-fns';
-import 'react-date-range/dist/styles.css'; // main style file
-import 'react-date-range/dist/theme/default.css'; // theme css file
-
+// import { useState } from 'react';
 import { useSelector,useDispatch} from 'react-redux'
+
+// import { DateRangePicker } from 'react-date-range';
+// import { format } from 'date-fns';
+// import 'react-date-range/dist/styles.css'; 
+// import 'react-date-range/dist/theme/default.css'; 
 
 import {toggleAddTaskSliceActions} from '../../redux/toggleAddTaskSlice'
 import './index.css'
@@ -13,18 +13,12 @@ import profile from '../../images/account-profile.png'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import AddTask from '../AddTask/index'
 import EachStatusCard from '../EachStatusCard/index'
-import { useState } from 'react';
-
-
+import DateTimeRangeFilter from '../DateTimeRangeFilter/index'
 
 const Main = () => {
-  const [date,setDate] = useState({
-    startDate: new Date(),
-    endDate: new Date(),
-    key: 'selection',
-  })
-
-  const [isOpenDate,setIsOpenDate] = useState(false)
+  // const [startDate, setStartDate] = useState(new Date());
+  // const [endDate, setEndDate] = useState(new Date());
+  // const [isOpenDate, setIsOpenDate] = useState(false);
   
   const dispatch = useDispatch()  
   const {openAddTaskCard,changeSortBy,changeFilterBy,setFilterAssignee} = toggleAddTaskSliceActions
@@ -76,14 +70,17 @@ const Main = () => {
     dispatch(setFilterAssignee(e.target.value))
   }
 
-  // Function to handle date range change
-  const handleSelect =(ranges)=>{
-    setDate(ranges.selection)
-  }
+  // const handleSelect = (ranges) => {
+  //   setStartDate(ranges.selection.startDate);
+  //   setEndDate(ranges.selection.endDate);
+  // };
 
-  const handleOpenDate = ()=>{
-    setIsOpenDate((previousState)=>!previousState)
-  }
+  // const handleOpenDate = () => {
+  //   setIsOpenDate((previousState) => !previousState);
+  // };
+
+  // const formattedStartDate = format(startDate, 'M/d/yyyy, h:mm:ss a');
+  // const formattedEndDate = format(endDate, 'M/d/yyyy, h:mm:ss a');
 
   return (
     <div className='task-board-bg'>
@@ -115,13 +112,28 @@ const Main = () => {
             </option>
           </select>
 
-        {/* Date Range Picker */}
-        <p onClick={handleOpenDate} className='date-head'>
-          {`${format(date.startDate,"MMM,dd,yyyy")} to ${format(date.endDate,"MMM,dd,yyyy")}`}
-        </p>
-        {
-          isOpenDate && <DateRangePicker ranges={[date]} onChange={handleSelect} />
-        }
+          <DateTimeRangeFilter/>
+          
+          {/* <p onClick={handleOpenDate} className='date-head'>
+            {`${formattedStartDate} to ${formattedEndDate}`}
+          </p> */}
+          {/* {isOpenDate && (
+            <DateRangePicker
+              showSelectionPreview={true}
+              showPreview={true}
+              showTimePicker={true}
+              showSecond={true} // include seconds
+              ranges={[
+                {
+                  startDate,
+                  endDate,
+                  key: 'selection',
+                },
+              ]}
+              onChange={handleSelect}
+            />
+          )} */}
+
         
       </div>
 
