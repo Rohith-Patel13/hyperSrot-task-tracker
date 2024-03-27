@@ -55,9 +55,11 @@ const EachStatusCard = (props) => {
     // console.log(filteredTasks)
 
     const tasksInRange = filteredTasks.filter((task) => {
+      if(startDate===null && endDate===null){
+        return filteredTasks
+      }
       const taskStartDate = new Date(task.startDate);
       const taskEndDate = new Date(task.endDate);
-  
       return taskStartDate >= startDate && taskEndDate <= endDate;
     });
 
