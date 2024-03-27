@@ -1,25 +1,20 @@
-// import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-// import { useState } from 'react';
+import { useState } from 'react';
 import { useSelector,useDispatch} from 'react-redux'
 
-// import { DateRangePicker } from 'react-date-range';
-// import { format } from 'date-fns';
-// import 'react-date-range/dist/styles.css'; 
-// import 'react-date-range/dist/theme/default.css'; 
 
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import {toggleAddTaskSliceActions} from '../../redux/toggleAddTaskSlice'
 import './index.css'
 import profile from '../../images/account-profile.png'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import AddTask from '../AddTask/index'
 import EachStatusCard from '../EachStatusCard/index'
-import DateTimeRangeFilter from '../DateTimeRangeFilter/index'
 
 const Main = () => {
-  // const [startDate, setStartDate] = useState(new Date());
-  // const [endDate, setEndDate] = useState(new Date());
-  // const [isOpenDate, setIsOpenDate] = useState(false);
-  
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+
   const dispatch = useDispatch()  
   const {openAddTaskCard,changeSortBy,changeFilterBy,setFilterAssignee} = toggleAddTaskSliceActions
   const isOpenValue = useSelector((previousState)=>{
@@ -70,18 +65,19 @@ const Main = () => {
     dispatch(setFilterAssignee(e.target.value))
   }
 
-  // const handleSelect = (ranges) => {
-  //   setStartDate(ranges.selection.startDate);
-  //   setEndDate(ranges.selection.endDate);
-  // };
 
-  // const handleOpenDate = () => {
-  //   setIsOpenDate((previousState) => !previousState);
-  // };
+  const handleStartDateChange = date => {
+    setStartDate(date);
+  };
 
-  // const formattedStartDate = format(startDate, 'M/d/yyyy, h:mm:ss a');
-  // const formattedEndDate = format(endDate, 'M/d/yyyy, h:mm:ss a');
+  const handleEndDateChange = date => {
+    setEndDate(date);
+  };
 
+
+
+
+ 
   return (
     <div className='task-board-bg'>
       <div className='header'>
@@ -112,29 +108,34 @@ const Main = () => {
             </option>
           </select>
 
-          <DateTimeRangeFilter/>
           
-          {/* <p onClick={handleOpenDate} className='date-head'>
-            {`${formattedStartDate} to ${formattedEndDate}`}
-          </p> */}
-          {/* {isOpenDate && (
-            <DateRangePicker
-              showSelectionPreview={true}
-              showPreview={true}
-              showTimePicker={true}
-              showSecond={true} // include seconds
-              ranges={[
-                {
-                  startDate,
-                  endDate,
-                  key: 'selection',
-                },
-              ]}
-              onChange={handleSelect}
-            />
-          )} */}
-
-        
+      <div className='bg-date'>
+        <div>
+          <label>Start Date:</label>
+          <DatePicker
+          selected={startDate}
+          onChange={handleStartDateChange}
+          showTimeSelect
+          timeFormat="HH:mm:ss"
+          timeIntervals={5}
+          timeCaption="time"
+          dateFormat="MMMM d, yyyy h:mm:ss aa"
+          />
+        </div>
+        <div>
+          <label>End Date:</label>
+          <DatePicker
+          selected={endDate}
+          onChange={handleEndDateChange}
+          showTimeSelect
+          timeFormat="HH:mm:ss"
+          timeIntervals={5}
+          timeCaption="time"
+          dateFormat="MMMM d, yyyy h:mm:ss aa"
+          />
+        </div>
+      </div>
+          
       </div>
 
         <div className='sort-by-bg'>
@@ -158,6 +159,7 @@ const Main = () => {
                 <EachStatusCard eachStatus={eachStatus}
                  filterByPriority = {filterByPriority}
                  filterAssignee={filterAssignee}
+                 startDate={startDate} endDate={endDate}
                  sortBy={sortBy}
                  key={eachStatus.id}/>
               ))

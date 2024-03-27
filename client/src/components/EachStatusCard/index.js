@@ -3,8 +3,10 @@ import Task from '../Task/index'
 import './index.css'
 
 const EachStatusCard = (props) => {
-  const {eachStatus,sortBy,filterAssignee,filterByPriority  } = props
+  const {eachStatus,sortBy,filterAssignee,filterByPriority,startDate,endDate } = props
   const {statusText,tasks} = eachStatus
+
+  // console.log(startDate,endDate)
 
    // Function to sort tasks by priority
    const sortTasksByPriority = (tasks) => {
@@ -52,17 +54,22 @@ const EachStatusCard = (props) => {
     })
     // console.log(filteredTasks)
 
- 
+    const tasksInRange = filteredTasks.filter((task) => {
+      const taskStartDate = new Date(task.startDate);
+      const taskEndDate = new Date(task.endDate);
+  
+      return taskStartDate >= startDate && taskEndDate <= endDate;
+    });
 
     switch (sortBy) {       
       case 'priority':
-        return sortTasksByPriority(filteredTasks) 
+        return sortTasksByPriority(tasksInRange) 
       case "startDate":
-        return sortTasksByStartDate(filteredTasks)  
+        return sortTasksByStartDate(tasksInRange)  
       case "endDate":
-        return sortTasksByEndDate(filteredTasks)
+        return sortTasksByEndDate(tasksInRange)
       default:
-        return sortTasksByPriority(filteredTasks)
+        return sortTasksByPriority(tasksInRange)
     }
   }
 

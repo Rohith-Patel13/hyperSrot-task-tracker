@@ -51,3 +51,6 @@
     cursor: pointer;
 }
 
+.bg-date{
+    display: flex;
+}
