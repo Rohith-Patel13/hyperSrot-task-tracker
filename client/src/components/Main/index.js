@@ -14,7 +14,7 @@ import EachStatusCard from '../EachStatusCard/index'
 const Main = () => {
 
   const dispatch = useDispatch()  
-  const {openAddTaskCard,changeSortBy} = toggleAddTaskSliceActions
+  const {openAddTaskCard,changeSortBy,changeFilterBy,setFilterAssignee} = toggleAddTaskSliceActions
   const isOpenValue = useSelector((previousState)=>{
     const {mainToggleAddTaskSliceReducer} = previousState
     const {isOpen} = mainToggleAddTaskSliceReducer
@@ -33,6 +33,18 @@ const Main = () => {
     return sortBy
   })
 
+  const filterByPriority = useSelector((previousState)=>{
+    const {mainToggleAddTaskSliceReducer} = previousState
+    const {filterByPriority} = mainToggleAddTaskSliceReducer
+    return filterByPriority
+  })
+
+  const filterAssignee = useSelector((previousState)=>{
+    const {mainToggleAddTaskSliceReducer} = previousState
+    const {filterAssignee} = mainToggleAddTaskSliceReducer
+    return filterAssignee
+  })
+
   // console.log(statusListValues)
 
   const addNewTaskButtonClicked=()=>{
@@ -42,6 +54,14 @@ const Main = () => {
   const handleSortChange = (e) => {
     dispatch(changeSortBy(e.target.value));
   };
+
+  const handleFilterPriorityChange=(e)=>{
+    dispatch(changeFilterBy(e.target.value))
+  }
+
+  const handleAssigneeChange = (e)=>{
+    dispatch(setFilterAssignee(e.target.value))
+  }
 
   return (
     <div className='task-board-bg'>
@@ -54,6 +74,22 @@ const Main = () => {
         <button type='button' className='btn btn-primary add-task-btn'
         onClick={addNewTaskButtonClicked}
         >Add New Task</button>
+
+        <div className='filter-by-bg'>
+          <p>Filter By:</p>
+          <input type='text' onChange={handleAssigneeChange} value={filterAssignee} placeholder='Assignee Name' />
+          <select onChange={handleFilterPriorityChange} value={filterByPriority}>
+            <option value='p0'>
+              P0
+            </option>
+            <option value='p1'>
+              P1
+            </option>
+            <option value='p2'>
+              P2
+            </option>
+          </select>
+        </div>
 
         <div className='sort-by-bg'>
           <label htmlFor='sortById'>Sort By:</label>
