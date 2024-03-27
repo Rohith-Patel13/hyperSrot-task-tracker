@@ -3,7 +3,7 @@ import Task from '../Task/index'
 import './index.css'
 
 const EachStatusCard = (props) => {
-  const {eachStatus,sortBy,filterAssignee} = props
+  const {eachStatus,sortBy,filterAssignee,filterByPriority } = props
   const {statusText,tasks} = eachStatus
 
    // Function to sort tasks by priority
@@ -43,10 +43,13 @@ const EachStatusCard = (props) => {
   
 
   const sortTasksBy=(tasks)=>{
-    
-    const filteredTasks = tasks.filter((eachTask)=>(
-      eachTask.assignees.toLowerCase().includes(filterAssignee.toLowerCase())
-    ))
+    const filteredTasks = tasks.filter((eachTask)=>{
+      console.log(filterByPriority,'filterByPriority')
+      console.log(eachTask.priority.toLowerCase(),"eachTask.priority.toLowerCase()")
+      const priorityMatch = filterByPriority===''?true: eachTask.priority.toLowerCase().includes(filterByPriority.toLowerCase())          
+      console.log(priorityMatch,'priorityMatch')
+      return eachTask.assignees.toLowerCase().includes(filterAssignee.toLowerCase()) && priorityMatch        
+    })
     // console.log(filteredTasks)
 
     switch (sortBy) {       

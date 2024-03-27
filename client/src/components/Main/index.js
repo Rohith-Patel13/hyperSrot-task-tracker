@@ -79,7 +79,7 @@ const Main = () => {
           <p>Filter By:</p>
           <input type='text' onChange={handleAssigneeChange} value={filterAssignee} placeholder='Assignee Name' />
           <select onChange={handleFilterPriorityChange} value={filterByPriority}>
-            <option value='priority'>
+            <option value="">
               Priority
             </option>
             <option value='p0'>
