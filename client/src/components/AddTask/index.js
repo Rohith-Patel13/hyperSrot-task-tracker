@@ -11,9 +11,10 @@ const AddTask = () => {
   const [formData,setFormData] = useState({id:uuidv4(),title:'',description:'',
   team:'',assignees:'',
   priority: 'p0',
-  statusValue:'Pending', startDate: new Date().toLocaleString(),
+  statusValue:'Pending',startDate: new Date().toLocaleString(),
   endDate:null,
   })
+
 
   const {closeAddTaskCard} = toggleAddTaskSliceActions
   const {addToStatus}= taskSliceActions

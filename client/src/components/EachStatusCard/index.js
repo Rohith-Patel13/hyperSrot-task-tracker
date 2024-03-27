@@ -17,15 +17,29 @@ const EachStatusCard = (props) => {
 
   const sortTasksByStartDate=(tasks)=>{
     return tasks.slice().sort((taskA,taskB)=>{
-      return taskA.startDate-taskB.startDate
+      // console.log(new Date(taskA.startDate)) Example Output:- Wed Mar 27 2024 11:15:18 GMT+0530 (India Standard Time)
+      const convertedTaskAdate = new Date(taskA.startDate)
+      const convertedTaskBdate = new Date(taskB.startDate)
+      if(convertedTaskAdate>convertedTaskBdate){
+        return 1 // will sort in ascending order
+      }
+      return -1 // will not sort
     })
   }  
 
   const sortTasksByEndDate=(tasks)=>{
-    return tasks.slice().reverse()
-  }
+    return tasks.slice().sort((taskA,taskB)=>{
+      // console.log(new Date(taskA.startDate)) Example Output:- Wed Mar 27 2024 11:15:18 GMT+0530 (India Standard Time)
+      const convertedTaskAdate = new Date(taskA.startDate)
+      const convertedTaskBdate = new Date(taskB.startDate)
+      if(convertedTaskAdate<convertedTaskBdate){
+        return 1 // will sort descending order or most recently added task
+      }
+      return -1 // will not sort
+    })
+  }  
 
-
+  
 
   const sortTasksBy=(tasks)=>{
     switch (sortBy) {       
