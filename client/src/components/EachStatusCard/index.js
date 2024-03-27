@@ -52,9 +52,9 @@ const EachStatusCard = (props) => {
       // console.log(priorityMatch,'priorityMatch')
       const taskStartDate = new Date(eachTask.startDate);
       const taskEndDate = new Date(eachTask.endDate);
-       
+      const taskDate = startDate===null || endDate===null ? true:taskStartDate >= startDate && taskEndDate <= endDate
       return eachTask.assignees.toLowerCase().includes(filterAssignee.toLowerCase())
-      && priorityMatch && taskStartDate >= startDate && taskEndDate <= endDate     
+      && priorityMatch && taskDate   
     })
 
     switch (sortBy) {       
