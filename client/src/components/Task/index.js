@@ -10,7 +10,10 @@ import './index.css'
 const Task = (props) => {
   
   const {eachObject}=props
-  const {id,title,description,assignees,priority,statusValue}=eachObject
+  const {id,title,description,assignees,priority,statusValue,startDate}=eachObject
+
+  const showDateString = startDate.toLocaleString();
+
   const {editOpen} = toggleAddTaskSliceActions
   const {removedTask,taskToBeEditable}= taskSliceActions  
   const dispatch = useDispatch()
@@ -33,6 +36,7 @@ const Task = (props) => {
     dispatch(taskToBeEditable({eachObject}))    
   }
 
+  
 
   return (
     <div>
@@ -43,6 +47,7 @@ const Task = (props) => {
       </p>
       <p>{`@${assignees}`}</p>
       <p>{statusValue}</p>
+      <p>{showDateString}</p>
       <div>
         <button className='btn btn-warning btns'
         type='button'
