@@ -42,6 +42,8 @@ const EachStatusCard = (props) => {
   
 
   const sortTasksBy=(tasks)=>{
+  
+
     switch (sortBy) {       
       case 'priority':
         return sortTasksByPriority(tasks) 

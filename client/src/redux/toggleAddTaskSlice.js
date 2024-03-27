@@ -4,7 +4,7 @@ const initialState = {
   isOpen: false,
   isEditOpen:false,
   sortBy: 'priority',
-  filterByPriority:"p0" ,
+  filterByPriority:"priority" ,
   filterAssignee: "",
 }
 
