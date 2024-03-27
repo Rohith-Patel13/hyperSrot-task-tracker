@@ -1,5 +1,9 @@
 // import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
+import { DateRangePicker } from 'react-date-range';
+import { format } from 'date-fns';
+import 'react-date-range/dist/styles.css'; // main style file
+import 'react-date-range/dist/theme/default.css'; // theme css file
 
 import { useSelector,useDispatch} from 'react-redux'
 
@@ -9,10 +13,18 @@ import profile from '../../images/account-profile.png'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import AddTask from '../AddTask/index'
 import EachStatusCard from '../EachStatusCard/index'
+import { useState } from 'react';
 
 
 
 const Main = () => {
+  const [date,setDate] = useState({
+    startDate: new Date(),
+    endDate: new Date(),
+    key: 'selection',
+  })
+
+  const [isOpenDate,setIsOpenDate] = useState(false)
   
   const dispatch = useDispatch()  
   const {openAddTaskCard,changeSortBy,changeFilterBy,setFilterAssignee} = toggleAddTaskSliceActions
@@ -65,7 +77,13 @@ const Main = () => {
   }
 
   // Function to handle date range change
+  const handleSelect =(ranges)=>{
+    setDate(ranges.selection)
+  }
 
+  const handleOpenDate = ()=>{
+    setIsOpenDate((previousState)=>!previousState)
+  }
 
   return (
     <div className='task-board-bg'>
@@ -98,8 +116,14 @@ const Main = () => {
           </select>
 
         {/* Date Range Picker */}
-
-        </div>
+        <p onClick={handleOpenDate} className='date-head'>
+          {`${format(date.startDate,"MMM,dd,yyyy")} to ${format(date.endDate,"MMM,dd,yyyy")}`}
+        </p>
+        {
+          isOpenDate && <DateRangePicker ranges={[date]} onChange={handleSelect} />
+        }
+        
+      </div>
 
         <div className='sort-by-bg'>
           <label htmlFor='sortById'>Sort By:</label>
