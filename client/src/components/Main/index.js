@@ -117,7 +117,7 @@ const Main = () => {
           onChange={handleStartDateChange}
           showTimeSelect
           timeFormat="HH:mm:ss"
-          timeIntervals={5}
+          timeIntervals={1}
           timeCaption="time"
           dateFormat="MMMM d, yyyy h:mm:ss aa"
           />
@@ -129,7 +129,7 @@ const Main = () => {
           onChange={handleEndDateChange}
           showTimeSelect
           timeFormat="HH:mm:ss"
-          timeIntervals={5}
+          timeIntervals={1}
           timeCaption="time"
           dateFormat="MMMM d, yyyy h:mm:ss aa"
           />
