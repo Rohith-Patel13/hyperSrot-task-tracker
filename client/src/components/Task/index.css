@@ -29,10 +29,13 @@
 .bg-priority-para{
     background-color: rgb(95, 95, 237);
     color: white;
-    padding-right: 4px;
-    padding-left: 4px;
-    padding-top: 2px;
-    padding-bottom: 2px;
+    padding-right: 8px;
+    padding-left: 8px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.head-date-each{
+    font-weight: bold;
 }
 
 .status-value-text-bg{
@@ -48,4 +51,12 @@
 
 .status-value-text{
     margin-bottom: 0px;
+}
+
+.start-date-para{
+    margin-top: 1em;
+}
+
+.team-text{
+    font-weight: bold;
 }

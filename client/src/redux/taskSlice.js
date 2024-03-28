@@ -71,8 +71,21 @@ const taskSlice = createSlice({
         previousState.statusValues.forEach((eachStatus)=>{
             eachStatus.tasks.forEach((eachTask)=>{
                 if(eachTask.id===data.id){
+
                     if (eachTask.priority!==data.priority) {
                         eachTask.priority=data.priority
+                    }
+                    if(eachTask.title!==data.title){
+                        eachTask.title=data.title
+                    }
+                    if(eachTask.description!==data.description){
+                        eachTask.description=data.description
+                    }
+                    if(eachTask.team!==data.team){
+                        eachTask.team=data.team
+                    }
+                    if(eachTask.assignees!==data.assignees){
+                        eachTask.assignees=data.assignees
                     }
                     if(eachTask.statusValue!==data.statusValue){
                         const index = eachStatus.tasks.findIndex(t => t.id === data.id);

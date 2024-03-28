@@ -7,12 +7,16 @@ import circleCrossIcon from '../../images/circle-cross-icon.png'
 import './index.css'
 
 const Edit = () => {
+
+  const [isEditable,setIsEditable] = useState(false)
   
   const editableObject = useSelector((previousState)=>{
     const {mainTaskSliceReducer} = previousState 
     const {taskToBeEdit} = mainTaskSliceReducer
     return taskToBeEdit
   })
+
+  // console.log(editableObject,"editableObject")
 
   
   const [data,setData] = useState({})
@@ -48,6 +52,12 @@ const Edit = () => {
   },[editableObject])
 
 
+  const handleReset = () => {
+    setIsEditable(true)
+  };
+  
+ 
+
 
   // console.log(data,'In Edit Component')
   return (
@@ -61,6 +71,34 @@ const Edit = () => {
             />  
         </div>
         <form>
+            <div>
+              <label htmlFor='titleId'>Title:</label>
+              <input
+                id='titleId'
+                type='text'
+                name='title'
+                value={data.title}
+                onChange={isEditable ? handleInputChange : null}
+              />
+            </div>
+            <div>
+              <label htmlFor='descId'>Description:</label>
+              <textarea id='descId' type="text" name='description' value={data.description}
+              onChange={isEditable ? handleInputChange : null}
+               />
+            </div>
+            <div>
+              <label htmlFor='teamId'>Team:</label>
+              <input id='teamId' type="text" name='team' value={data.team}
+              onChange={isEditable ? handleInputChange : null}
+               />
+            </div>
+            <div>
+              <label htmlFor='assigneeId'>Assignee:</label>
+              <input id='assigneeId' type="text" name='assignees' value={data.assignees}
+              onChange={isEditable ? handleInputChange : null}
+               />
+            </div>
             <div className='each-label-bg'>
                 <label className='label-name' htmlFor="selectedOption">Priority:</label>
                 <select id="selectedOption"
@@ -91,7 +129,11 @@ const Edit = () => {
 
             <button type='button' className='btn btn-success'
             onClick={saveButtonClicked}
-            >Save</button>    
+            >Submit</button>   
+            
+            <button type='button' className='btn btn-warning'
+            onClick={handleReset}
+            >Reset</button>  
         </form>
         
     </div>
