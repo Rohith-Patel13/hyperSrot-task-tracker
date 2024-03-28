@@ -5,7 +5,7 @@
     left: 50%;
     transform: translate(-50%, -50%);/* center an element both horizontally and vertically within its containing element. */
     background-color: white;
-    padding: 20px;
+    
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -20,17 +20,22 @@
     
 }
 
-
+.head-add-task{
+    margin-bottom: 0px;
+}
 
 .each-label-bg{
+    margin-bottom: 0.8em;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1em;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .label-name{
     cursor: pointer;
+    align-self: start;
+    font-weight: 600;
+    margin-bottom: 6px;
 }
 
 .circle-cross-icon{
@@ -39,5 +44,42 @@
     cursor: pointer;
 }
 
+.form-bg{
+    background-image: linear-gradient(to right,#f1c3f1,#a2e2ef);
+    padding: 20px;
+    margin-bottom: 1em;
+}
 
+.each-label-priority-bg{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
 
+.priority-head{
+    margin-right: 1em;
+}
+
+.add-task-select-options {
+    max-width: 150px;
+    height: 1.9em;
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid rgb(232, 226, 226);
+    cursor: pointer;
+    color: #5c5b5b;
+}
+
+.add-btn{
+    margin: 1em;
+}
+.add-bg-btn{
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media screen and (max-width:560px) {
+    .add-task-bg{
+        width: auto;
+    }
+}

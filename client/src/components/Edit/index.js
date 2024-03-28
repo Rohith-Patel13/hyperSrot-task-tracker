@@ -63,47 +63,52 @@ const Edit = () => {
   return (
     <div className='edit-task-bg'>
         <div className='header-edit-task-bg'>
-            <h2>EDIT TASK</h2>
+            <h2 className='edit-main-head'>EDIT TASK</h2>
             <img src={circleCrossIcon}
              alt='X' 
              className='circle-cross-icon'
              onClick={crossClicked}
             />  
         </div>
-        <form>
-            <div>
-              <label htmlFor='titleId'>Title:</label>
+        <div className='edit-form-bg'>
+            <div className='bg-edit-texts'>
+              <label className='label-name edit-popup-text-para' htmlFor='titleId'>Title:</label>
               <input
                 id='titleId'
                 type='text'
                 name='title'
                 value={data.title}
                 onChange={isEditable ? handleInputChange : null}
+                className={`form-control ${isEditable?"":"not-editable-bg"}`}
               />
             </div>
-            <div>
-              <label htmlFor='descId'>Description:</label>
+            <div className='bg-edit-texts'>
+              <label className='label-name edit-popup-text-para' htmlFor='descId'>Description:</label>
               <textarea id='descId' type="text" name='description' value={data.description}
               onChange={isEditable ? handleInputChange : null}
+              className={`form-control ${isEditable?"":"not-editable-bg"}`}
                />
             </div>
-            <div>
-              <label htmlFor='teamId'>Team:</label>
+            <div className='bg-edit-texts'>
+              <label className='label-name edit-popup-text-para' htmlFor='teamId'>Team:</label>
               <input id='teamId' type="text" name='team' value={data.team}
               onChange={isEditable ? handleInputChange : null}
+              className={`form-control ${isEditable?"":"not-editable-bg"}`}
                />
             </div>
-            <div>
-              <label htmlFor='assigneeId'>Assignee:</label>
+            <div className='bg-edit-texts'>
+              <label className='label-name edit-popup-text-para' htmlFor='assigneeId'>Assignee:</label>
               <input id='assigneeId' type="text" name='assignees' value={data.assignees}
               onChange={isEditable ? handleInputChange : null}
+              className={`form-control ${isEditable?"":"not-editable-bg"}`}
                />
             </div>
-            <div className='each-label-bg'>
-                <label className='label-name' htmlFor="selectedOption">Priority:</label>
+            <div className='edit-priority-bg'>
+                <label className='edit-priority-para' htmlFor="selectedOption">Priority:</label>
                 <select id="selectedOption"
                  name='priority'
                 value={data.priority}
+                className='edit-select-options '
                 onChange={handleInputChange}
                 >                   
                     <option value="p0">P0</option>
@@ -112,12 +117,13 @@ const Edit = () => {
                 </select>
             </div>      
 
-            <div className='each-label-bg'>
-                <label className='label-name' htmlFor="statusSelectedOption">Status:</label>
+            <div className='edit-status-bg'>
+                <label className='edit-status-para' htmlFor="statusSelectedOption">Status:</label>
                 <select id="statusSelectedOption"
                 name='statusValue'
                 value={data.statusValue}
                 onChange={handleInputChange}
+                className='edit-select-options '
                 >                   
                     <option value="Completed">Completed</option>
                     <option value="In Progress">In Progress</option>
@@ -126,16 +132,18 @@ const Edit = () => {
                     <option value="Deffered">Deffered</option>
                 </select>
             </div>  
+        </div>
 
-            <button type='button' className='btn btn-success'
+        <div className='btn-edit-bg'>
+          <button type='button' className='btn btn-success save-btn'
             onClick={saveButtonClicked}
-            >Submit</button>   
+          >Submit</button>   
             
-            <button type='button' className='btn btn-warning'
-            onClick={handleReset}
-            >Reset</button>  
-        </form>
-        
+          <button type='button' className='btn btn-warning reset-btn'
+          onClick={handleReset}
+          >Reset</button> 
+        </div>
+
     </div>
   )
 }

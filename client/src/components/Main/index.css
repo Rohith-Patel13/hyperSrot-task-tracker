@@ -125,3 +125,14 @@
     display: flex;
 }
 
+
+
+@media screen and (max-width:1060px) {
+    .board-header{
+        flex-direction: column;
+    }
+    .add-task-btn{
+        margin-top: 1em;
+    }
+}
+

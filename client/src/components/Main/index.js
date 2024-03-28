@@ -91,6 +91,7 @@ const Main = () => {
           <div className='filter-sort-bg'>
             <div className='filter-by-bg'>
               <p className='filter-head-para'>Filter By:</p>
+              
               <input type='text' className='form-control assignee-input' onChange={handleAssigneeChange} value={filterAssignee} placeholder='Assignee Name' />
               <select className='filterby-priority-options' onChange={handleFilterPriorityChange} value={filterByPriority}>
                 <option value="">
@@ -137,6 +138,7 @@ const Main = () => {
                   />
                 </div>
               </div>
+            
             </div>
 
             <div className='sort-by-bg'>
