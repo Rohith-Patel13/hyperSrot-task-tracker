@@ -5,4 +5,47 @@
 
 .each-task-bg{
     padding: 1rem;
+    background-color: #eff3f0;
+    margin: 1em;
+    border: 1px solid transparent;
+    border-radius: 8px;
+}
+
+.head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.horizontal-line{
+    border: 1px solid gray;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.priority-para{
+    margin-bottom: 0px;
+}
+.bg-priority-para{
+    background-color: rgb(95, 95, 237);
+    color: white;
+    padding-right: 4px;
+    padding-left: 4px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.status-value-text-bg{
+    background-color: rgb(66, 66, 249);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.status-value-text{
+    margin-bottom: 0px;
 }

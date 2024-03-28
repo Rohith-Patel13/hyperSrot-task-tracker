@@ -29,7 +29,7 @@ const cardHeadBgColors= [
     headerText:"Deffered",
   },
 ]
-console.log(cardHeadBgColors)
+
 
 
 

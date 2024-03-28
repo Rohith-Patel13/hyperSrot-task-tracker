@@ -3,10 +3,9 @@
     border-radius: 1rem;
     margin: 1em;
     
-    /* max-width: fit-content; */
-    min-width: 220px;
+    width: 270px;
     height: 65vh;
-    overflow: auto;
+    overflow: scroll;
     background-color: white;
 }
 

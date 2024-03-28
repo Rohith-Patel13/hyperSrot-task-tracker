@@ -10,11 +10,10 @@ import './index.css'
 const Task = (props) => {
   
   const {eachObject}=props
-  const {id,title,description,assignees,priority,statusValue,startDate,endDate}=eachObject
+  const {id,title,description,assignees,priority,statusValue,startDate}=eachObject
 
   const showDateString = startDate.toLocaleString();
-  const showEndDateSrtring = !endDate?null:endDate.toLocaleString()
-
+  
   const {editOpen} = toggleAddTaskSliceActions
   const {removedTask,taskToBeEditable}= taskSliceActions  
   const dispatch = useDispatch()
@@ -41,15 +40,24 @@ const Task = (props) => {
 
   return (
     <div className='each-task-bg'>
-      <h3>{title}</h3>
-      <p>{priority}</p>
-      <p>
+      <div className='head'>
+        <h3>{title}</h3>
+        <div className='bg-priority-para'>
+          <p className='priority-para'>{priority}</p>
+        </div>
+        
+      </div>
+      <hr className='horizontal-line'/>
+
+      <p className='desc'>
         {description}
       </p>
-      <p>{`@${assignees}`}</p>
-      <p>{statusValue}</p>
+      <h3 className='at-the-rate-icon'>{`@${assignees}`}</h3>
+      <div className='status-value-text-bg'>
+        <p className='status-value-text'>{statusValue}</p>
+      </div>
+      
       <p>{`Start Date: ${showDateString}`}</p>
-      <p>{`End Date: ${showEndDateSrtring}`}</p>
       <div>
         <button className='btn btn-warning btns'
         type='button'
