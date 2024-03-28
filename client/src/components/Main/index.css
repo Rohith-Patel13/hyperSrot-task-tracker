@@ -65,12 +65,16 @@
     margin-bottom: 0px;
     margin-right: 10px;
     font-weight: bold;
-    
+    font-size: large;
 }
 .sort-by-text{
     font-weight: bold;
     margin-right: 16.5px;
-    
+    font-size: large;
+}
+
+.option-value-para{
+    color: #808080;
 }
 
 .assignee-input,.filterby-priority-options,.start-date-bg,.end-date-bg{
@@ -87,7 +91,12 @@
     border-radius: 8px;
     border: 1px solid rgb(232, 226, 226);
     cursor: pointer;
+    color: #5c5b5b;
 }
+.each-option{
+    border: 1px solid rgb(232, 226, 226);   
+}
+
 .add-task-btn{
     cursor: pointer;
     margin-bottom: 1em;
@@ -115,3 +124,4 @@
 .bg-date{
     display: flex;
 }
+

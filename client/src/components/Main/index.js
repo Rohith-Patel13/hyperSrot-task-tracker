@@ -96,13 +96,13 @@ const Main = () => {
                 <option value="">
                   Priority
                 </option>
-                <option value='p0'>
+                <option  value='p0'>
                   P0
                 </option>
-                <option value='p1'>
+                <option  value='p1'>
                   P1
                 </option>
-                <option value='p2'>
+                <option  value='p2'>
                   P2
                 </option>
               </select>
@@ -141,7 +141,7 @@ const Main = () => {
 
             <div className='sort-by-bg'>
               <label className='sort-by-text' htmlFor='sortById'>Sort By:</label>
-              <select id='sortById' onChange={handleSortChange} value={sortBy}>
+              <select className='filterby-priority-options' id='sortById' onChange={handleSortChange} value={sortBy}>
                 <option value='priority'>
                   Priority
                 </option>
@@ -159,11 +159,7 @@ const Main = () => {
             onClick={addNewTaskButtonClicked}>
               Add New Task
           </button>
-        </div>
-
-
-
-        
+        </div>      
         <div className='bg-status-card'>
             {
               statusListValues.map((eachStatus)=>(

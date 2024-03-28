@@ -40,7 +40,7 @@ const Task = (props) => {
   
 
   return (
-    <div>
+    <div className='each-task-bg'>
       <h3>{title}</h3>
       <p>{priority}</p>
       <p>

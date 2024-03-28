@@ -1,11 +1,24 @@
 .each-status-card-bg{
-    border: 2px solid gray;
+    border: 0px solid transparent;
     border-radius: 1rem;
     margin: 1em;
-    padding: 1em;
-    width: min-content;
+    
+    /* max-width: fit-content; */
+    min-width: 220px;
     height: 65vh;
     overflow: auto;
+    background-color: white;
 }
 
-
+.each-status-card-head-bg{
+    background-color: #808080;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0.3em;
+}
+.each-status-card-head{
+    color: white;
+}

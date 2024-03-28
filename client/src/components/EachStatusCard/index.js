@@ -1,6 +1,37 @@
-
+import {v4 as uuidv4} from 'uuid'
 import Task from '../Task/index'
 import './index.css'
+
+const cardHeadBgColors= [
+  {
+    id:uuidv4(),
+    backgroundColor:"#808080", // Grey
+    headerText:"Pending",
+  },
+  {
+    id:uuidv4(),
+    backgroundColor:"#FFA500", // orange
+    headerText:"In Progress",
+  },
+  {
+    id:uuidv4(),
+    backgroundColor:"#5ced73", // Green
+    headerText:"Completed",
+  },
+  {
+    id:uuidv4(),
+    backgroundColor:"#371F76", // purple  
+    headerText:"Deployed",
+  },
+  {
+    id:uuidv4(),
+    backgroundColor:"#FFCCCB", // Red
+    headerText:"Deffered",
+  },
+]
+console.log(cardHeadBgColors)
+
+
 
 const EachStatusCard = (props) => {
   const {eachStatus,sortBy,filterAssignee,filterByPriority,startDate,endDate } = props
@@ -69,10 +100,20 @@ const EachStatusCard = (props) => {
     }
   }
 
+  // Find the corresponding color object for the statusText
+  const statusColor = cardHeadBgColors.find((colorObj) => colorObj.headerText === statusText);
+
+  // Dynamic inline styling for the status card background color
+  const statusCardStyle = {
+    backgroundColor: statusColor ? statusColor.backgroundColor : '#808080', // Default white if statusText not found
+  };
+
+
+
   return (
     <div className='each-status-card-bg'>
-        <div>
-            <h1>{statusText}</h1>
+        <div className='each-status-card-head-bg' style={statusCardStyle}>
+            <h2 className='each-status-card-head'>{statusText}</h2>
         </div>
         {
           tasks.length>0? sortTasksBy(tasks).map((eachObject)=>(
@@ -84,3 +125,4 @@ const EachStatusCard = (props) => {
 }
 
 export default EachStatusCard
+
