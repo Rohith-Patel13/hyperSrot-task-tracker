@@ -82,76 +82,87 @@ const Main = () => {
     <div className='task-board-bg'>
       <div className='header'>
         <h1>Task Board</h1>
-        <img src={profile} alt='profile' className='profile-image' />
-        {/* <FontAwesomeIcon icon="fa-solid fa-user" /> */}
+        <div className='profile-image-bg'>
+          <img src={profile} alt='profile' className='profile-image' />
+        </div>        
       </div>
       <div className='all-cards-bg'>
-        <button type='button' className='btn btn-primary add-task-btn'
-        onClick={addNewTaskButtonClicked}
-        >Add New Task</button>
+        <div className='board-header'>
+          <div className='filter-sort-bg'>
+            <div className='filter-by-bg'>
+              <p className='filter-head-para'>Filter By:</p>
+              <input type='text' className='form-control assignee-input' onChange={handleAssigneeChange} value={filterAssignee} placeholder='Assignee Name' />
+              <select className='filterby-priority-options' onChange={handleFilterPriorityChange} value={filterByPriority}>
+                <option value="">
+                  Priority
+                </option>
+                <option value='p0'>
+                  P0
+                </option>
+                <option value='p1'>
+                  P1
+                </option>
+                <option value='p2'>
+                  P2
+                </option>
+              </select>
 
-        <div className='filter-by-bg'>
-          <p>Filter By:</p>
-          <input type='text' onChange={handleAssigneeChange} value={filterAssignee} placeholder='Assignee Name' />
-          <select onChange={handleFilterPriorityChange} value={filterByPriority}>
-            <option value="">
-              Priority
-            </option>
-            <option value='p0'>
-              P0
-            </option>
-            <option value='p1'>
-              P1
-            </option>
-            <option value='p2'>
-              P2
-            </option>
-          </select>
+              <div className='bg-date'>
+                <div className='start-date-bg'>
+                  
+                  <DatePicker
+                  className='form-control start-date-input'
+                  placeholderText='Start Date...'
+                  selected={startDate}
+                  onChange={handleStartDateChange}
+                  showTimeSelect
+                  timeFormat="HH:mm:ss"
+                  timeIntervals={1}
+                  timeCaption="time"
+                  dateFormat="MMMM d, yyyy h:mm:ss aa"
+                  />
+                </div>
+                <div className='end-date-bg'>
+                  
+                  <DatePicker
+                  className='form-control end-date-input'
+                  placeholderText='End Date...'
+                  selected={endDate}
+                  onChange={handleEndDateChange}
+                  showTimeSelect
+                  timeFormat="HH:mm:ss"
+                  timeIntervals={1}
+                  timeCaption="time"
+                  dateFormat="MMMM d, yyyy h:mm:ss aa"
+                  />
+                </div>
+              </div>
+            </div>
 
-          
-      <div className='bg-date'>
-        <div>
-          <label>Start Date:</label>
-          <DatePicker
-          selected={startDate}
-          onChange={handleStartDateChange}
-          showTimeSelect
-          timeFormat="HH:mm:ss"
-          timeIntervals={1}
-          timeCaption="time"
-          dateFormat="MMMM d, yyyy h:mm:ss aa"
-          />
-        </div>
-        <div>
-          <label>End Date:</label>
-          <DatePicker
-          selected={endDate}
-          onChange={handleEndDateChange}
-          showTimeSelect
-          timeFormat="HH:mm:ss"
-          timeIntervals={1}
-          timeCaption="time"
-          dateFormat="MMMM d, yyyy h:mm:ss aa"
-          />
-        </div>
-      </div>
-          
-      </div>
+            <div className='sort-by-bg'>
+              <label className='sort-by-text' htmlFor='sortById'>Sort By:</label>
+              <select id='sortById' onChange={handleSortChange} value={sortBy}>
+                <option value='priority'>
+                  Priority
+                </option>
+                <option value='startDate'>
+                  Start Date
+                </option>
+                <option value='endDate'>
+                  End Date
+                </option>
+              </select>
+            </div>
+          </div>
 
-        <div className='sort-by-bg'>
-          <label htmlFor='sortById'>Sort By:</label>
-          <select id='sortById' onChange={handleSortChange} value={sortBy}>
-            <option value='priority'>
-              Priority
-            </option>
-            <option value='startDate'>
-              Start Date
-            </option>
-            <option value='endDate'>
-              End Date
-            </option>
-          </select>
+          <button type='button' className='btn btn-primary add-task-btn'
+            onClick={addNewTaskButtonClicked}>
+              Add New Task
+          </button>
         </div>
+
+
+
         
         <div className='bg-status-card'>
             {

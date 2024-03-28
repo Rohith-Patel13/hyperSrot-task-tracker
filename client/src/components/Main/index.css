@@ -3,9 +3,11 @@
 }
 
 
+
 .task-board-bg{
     min-height: 100vh;
     padding: 3em;
+    background-image: linear-gradient(to right,#f1c3f1,#a2e2ef);
 }
 
 .header{
@@ -15,6 +17,18 @@
     margin-bottom: 1em;
 }
 
+.profile-image-bg{
+    background-color: white;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .profile-image{
     height: 40px;
     width: 40px;
@@ -22,11 +36,58 @@
 
 .all-cards-bg{
     border-radius: 1em;
-    border: 3px solid #bfc3c5;
+    border: 3px solid white;
     min-height: 100vh;
     padding: 1em;
 }
+.board-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
 
+.filter-sort-bg{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.filter-by-bg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1em
+}
+
+.filter-head-para{
+    margin-bottom: 0px;
+    margin-right: 10px;
+    font-weight: bold;
+    
+}
+.sort-by-text{
+    font-weight: bold;
+    margin-right: 16.5px;
+    
+}
+
+.assignee-input,.filterby-priority-options,.start-date-bg,.end-date-bg{
+    margin-right: 10px;
+}
+
+.assignee-input{
+    max-width: 150px;
+}
+.filterby-priority-options{
+    max-width: 150px;
+    height: 2.33em;
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid rgb(232, 226, 226);
+    cursor: pointer;
+}
 .add-task-btn{
     cursor: pointer;
     margin-bottom: 1em;
