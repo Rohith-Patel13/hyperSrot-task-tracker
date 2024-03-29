@@ -44,13 +44,18 @@ const Delete = () => {
             />  
         </div>
         <div className='delete-text-btn-bg'>
-          <p className='deletepopup-text-para'>Title:{title}</p>      
-          <button type='button' className='btn btn-danger yes-btn'
-          onClick={yesBtnClicked}
-          >Yes</button>   
-          <button type='button' className='btn btn-warning no-btn'
-          onClick={noBtnClicked}
-          >No</button> 
+          <p className="warning-para">Do You Wish to Delete Task</p>
+          <div className="title-btn-bg">
+            <p className='deletepopup-text-para'>{title}</p>     
+            <div className="btn-delete-bg">
+              <button type='button' className='btn btn-danger yes-btn'
+              onClick={yesBtnClicked}
+              >Yes</button>   
+              <button type='button' className='btn btn-warning no-btn'
+              onClick={noBtnClicked}
+              >No</button>
+            </div> 
+          </div>
         </div>
     </div>
   )

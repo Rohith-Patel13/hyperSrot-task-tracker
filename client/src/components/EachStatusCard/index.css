@@ -3,7 +3,8 @@
     border-radius: 1rem;
     margin: 1em;
     
-    width: 270px;
+    /* width: 270px; */
+    width: 198px;
     height: 65vh;
     overflow: scroll;
     background-color: white;
