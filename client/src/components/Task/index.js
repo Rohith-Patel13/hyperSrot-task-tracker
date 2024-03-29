@@ -78,6 +78,7 @@ const Task = (props) => {
       {isEditOpenValue &&  (
         <Edit />
       )}   
+      
     </div>
   )
 }

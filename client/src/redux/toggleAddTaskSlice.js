@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   isOpen: false,
   isEditOpen:false,
+  isDeletOpen:false,
   sortBy: 'priority',
   filterByPriority:"" ,
   filterAssignee: "",
@@ -21,8 +22,14 @@ export const toggleAddTaskSlice = createSlice({
     editOpen:(previousState)=>{
       previousState.isEditOpen=true
     },
+    deleteOpen:(previousState)=>{
+      previousState.isDeleteOpen=true
+    },
     editClose:(previousState)=>{
       previousState.isEditOpen=false
+    },
+    deleteClose:(previousState)=>{
+      previousState.isDeleteOpen=false
     },
     changeSortBy: (previousState, action) => {
       previousState.sortBy = action.payload;

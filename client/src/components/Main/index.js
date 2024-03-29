@@ -93,7 +93,7 @@ const Main = () => {
               <p className='filter-head-para'>Filter By:</p>
               
               <input type='text' className='form-control assignee-input' onChange={handleAssigneeChange} value={filterAssignee} placeholder='Assignee Name' />
-              <select className='filterby-priority-options' onChange={handleFilterPriorityChange} value={filterByPriority}>
+              <select className='filterby-priority-options mobile-view-filter-priority' onChange={handleFilterPriorityChange} value={filterByPriority}>
                 <option value="">
                   Priority
                 </option>

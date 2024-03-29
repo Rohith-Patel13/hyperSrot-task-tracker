@@ -136,3 +136,29 @@
     }
 }
 
+@media screen and (max-width:960px) {
+    .filter-by-bg {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .assignee-input{
+        margin-top: 8px;
+        margin-bottom: 1em;
+    }
+    .mobile-view-filter-priority{
+        margin-bottom: 1em;
+    }
+    .board-header{
+        align-items: flex-start;
+    }
+
+}
+
+@media screen and (max-width:560px) {
+    .bg-date{
+        flex-direction: column;
+    }
+    .start-date-input{
+        margin-bottom: 8px;
+    }
+}
