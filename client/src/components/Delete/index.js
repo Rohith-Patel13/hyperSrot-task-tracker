@@ -1,10 +1,21 @@
-import { useDispatch  } from "react-redux"
+import { useDispatch ,useSelector } from "react-redux"
+import {toggleAddTaskSliceActions} from '../../redux/toggleAddTaskSlice'
+import {taskSliceActions} from '../../redux/taskSlice'
 import "./index.css"
 import circleCrossIcon from '../../images/circle-cross-icon.png'
 
 
 
 const Delete = () => {
+  const deletableObject = useSelector((previousState)=>{
+    const {mainTaskSliceReducer} = previousState 
+    const {taskToBeDelete} = mainTaskSliceReducer
+    return taskToBeDelete
+  })
+  console.log(deletableObject,"deletableObject")
+
+  const {id,title}= deletableObject
+  const {removedTask} = taskSliceActions
 
   const dispatch = useDispatch()  
   const {deleteClose} = toggleAddTaskSliceActions
@@ -12,6 +23,15 @@ const Delete = () => {
   const crossClicked = ()=>{
     dispatch(deleteClose())
   } 
+
+  const yesBtnClicked =()=>{
+    dispatch(deleteClose())
+    dispatch(removedTask({id}))
+  }
+
+  const noBtnClicked =()=>{
+    dispatch(deleteClose())
+  }
 
   return (
     <div className='delete-task-bg'>
@@ -23,28 +43,15 @@ const Delete = () => {
              onClick={crossClicked}
             />  
         </div>
-        <div className='delete-form-bg'>
-            <div className='bg-edit-texts'>
-              <label className='label-name edit-popup-text-para' htmlFor='titleId'>Title:</label>
-              <input
-                id='titleId'
-                type='text'
-                name='title'
-                value={data.title}
-                onChange={isEditable ? handleInputChange : null}
-                className={`form-control ${isEditable?"":"not-editable-bg"}`}
-              />
-            </div>
-        </div>
-
-        <div className='btn-delete-bg'>
-          <button type='button' className='btn btn-success yes-btn'
+        <div className='delete-text-btn-bg'>
+          <p className='deletepopup-text-para'>Title:{title}</p>      
+          <button type='button' className='btn btn-danger yes-btn'
+          onClick={yesBtnClicked}
           >Yes</button>   
-            
           <button type='button' className='btn btn-warning no-btn'
+          onClick={noBtnClicked}
           >No</button> 
         </div>
-
     </div>
   )
 }

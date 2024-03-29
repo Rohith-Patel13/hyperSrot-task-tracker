@@ -2,6 +2,7 @@
 import { useDispatch ,useSelector} from 'react-redux'
 import {format} from 'date-fns'
 import Edit from '../Edit/index'
+import Delete from '../Delete/index'
 import {taskSliceActions} from '../../redux/taskSlice'
 import {toggleAddTaskSliceActions} from '../../redux/toggleAddTaskSlice'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
@@ -11,14 +12,14 @@ import './index.css'
 const Task = (props) => {
   
   const {eachObject}=props
-  const {id,title,description,assignees,priority,statusValue,startDate,team}=eachObject
+  const {title,description,assignees,priority,statusValue,startDate,team}=eachObject
   // console.log(startDate,"startDate") // format: 3/28/2024, 3:21:02 PM
   const inputDate = new Date(startDate);
   // console.log(inputDate,"inputDate") // format: Thu Mar 28 2024 15:27:07 GMT+0530 (India Standard Time)
   const formattedDate = format(inputDate, 'MMMM do, yyyy, h:mm:ss a');
  
-  const {editOpen} = toggleAddTaskSliceActions
-  const {removedTask,taskToBeEditable}= taskSliceActions  
+  const {editOpen,deleteOpen} = toggleAddTaskSliceActions
+  const {/*removedTask,*/taskToBeEditable,taskToBeDeletable}= taskSliceActions  
   const dispatch = useDispatch()
 
   const isEditOpenValue = useSelector((previousState)=>{
@@ -27,20 +28,27 @@ const Task = (props) => {
     return isEditOpen
   })
 
+  const isDeleteOpen = useSelector((previousState)=>{
+    const {mainToggleAddTaskSliceReducer} = previousState 
+    const {isDeleteOpen} = mainToggleAddTaskSliceReducer
+    return isDeleteOpen
+  })
+
+
   const deleteButtonClicked=()=>{
     // console.log("deleteButtonClicked")
-    dispatch(removedTask({id}))
+    dispatch(deleteOpen())
+    dispatch(taskToBeDeletable({eachObject}))    
+    // dispatch(removedTask({id}))
   }
 
 
   const editButtonClicked =()=>{
     // console.log(id,'editButtonClicked')   
     // console.log(eachObject,'editButtonClicked')
-    dispatch(editOpen({id}))
+    dispatch(editOpen())
     dispatch(taskToBeEditable({eachObject}))    
   }
-
-  
 
   return (
     <div className='each-task-bg'>
@@ -75,9 +83,9 @@ const Task = (props) => {
       </div>
 
       
-      {isEditOpenValue &&  (
-        <Edit />
-      )}   
+      {isEditOpenValue && <Edit />}   
+
+      {isDeleteOpen && <Delete/>}
       
     </div>
   )

@@ -32,8 +32,8 @@ const firstState = {
         },
     ],
 
-    taskToBeEdit:{}
-    
+    taskToBeEdit:{},
+    taskToBeDelete:{},
 }
 
 const taskSlice = createSlice({
@@ -64,6 +64,9 @@ const taskSlice = createSlice({
     taskToBeEditable:(previousState,action)=>{
         // console.log(previousState,action.payload.eachObject)
         previousState.taskToBeEdit=action.payload.eachObject
+    },
+    taskToBeDeletable:(previousState,action)=>{
+        previousState.taskToBeDelete=action.payload.eachObject
     },
 
     edit: (previousState, action) => {
