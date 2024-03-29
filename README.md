@@ -1,5 +1,5 @@
 
-# Output Video Download Link: (Off the sound,watch in 1080p quality)
+# Output Video  Link: (Off the sound,watch in 1080p quality)
 https://drive.google.com/file/d/1KB_kC0VoaH5Za5wOIZ-wJyPnULFCMsaV/view?usp=sharing
 
 # How to Install and run Application 
