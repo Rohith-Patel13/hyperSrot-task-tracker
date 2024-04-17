@@ -1,6 +1,10 @@
 
+
 # Output Video  Link: (Off the sound,watch in 1080p quality)
 https://drive.google.com/file/d/1KB_kC0VoaH5Za5wOIZ-wJyPnULFCMsaV/view?usp=sharing
+
+# Deployed link:
+https://task-tracker-frontend-app.netlify.app/
 
 # How to Install and run Application 
 
